@@ -17,7 +17,7 @@ public class beforeAndAfter extends Navigation{
 
     @After
     public void afterScenario() {
-//        driver.close();
+        driver.close();
     }
 
 }
