@@ -23,12 +23,21 @@ public class homepageSteps {
         homepage.navigateToHomepage();
     }
 
+    /**
+     * This step logs user with correct credentials
+     * @throws Throwable
+     */
     @And("^user logs in$")
     public void userLogsIn() throws Throwable {
         header.introduceCorrectCredentials();
         header.clickOnLogin();
     }
 
+    /**
+     * This step sends user to the first event of a certain sport
+     * @param sportName
+     * @throws Throwable
+     */
     @And("^user navigates to a (football|tennis) event$")
     public void userNavigatesToASportEvent(String sportName) throws Throwable {
         homepage.navigateToEvent(sportName);

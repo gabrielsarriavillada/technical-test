@@ -24,7 +24,7 @@ public class sportPageSteps {
     private Header header = new Header();
 
     /**
-     * This step adds first actibe selection in the page to the betslip
+     * This step adds first active selection in the page to the betslip
      * @throws Throwable
      */
     @When("^user adds first active selection to betslip$")
@@ -32,6 +32,11 @@ public class sportPageSteps {
         event.firstActiveSelectionIsSelected();
     }
 
+    /**
+     * This step place a single bet of the first selection available in betslip, using certain stake amount
+     * @param stake
+     * @throws Throwable
+     */
     @And("^user places a '(.*)' bet$")
     public void userPlacesABet(BigDecimal stake) throws Throwable {
         ScenarioContext.saveBalance(header.getAccountBalance());
@@ -40,6 +45,10 @@ public class sportPageSteps {
         betslip.placeBet();
     }
 
+    /**
+     * This step compares the old value of the balance with the new one
+     * @throws Throwable
+     */
     @Then("^user balance is updated$")
     public void userBalanceIsUpdated() throws Throwable {
         BigDecimal previousBalance = ScenarioContext.getSavedBalance();
@@ -49,6 +58,6 @@ public class sportPageSteps {
 
         BigDecimal currentBalance = header.getAccountBalance();
 
-        assertThat(currentBalance.equals(expectedBalance)).isTrue();
+        assertThat(currentBalance.equals(expectedBalance)).as("Account balance hasn't been updated as expected").isTrue();
     }
 }

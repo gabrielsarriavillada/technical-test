@@ -1,5 +1,6 @@
-Feature: Bet placement
 @test
+Feature: Bet placement
+
   Scenario Outline: Bet placement in football page
     Given user goes to homepage
     And user logs in

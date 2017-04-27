@@ -2,6 +2,7 @@ package utils;
 
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -20,7 +21,7 @@ public class Navigation {
     protected void navigateToUrl(String url){
         ChromeDriverManager.getInstance().setup();
         driver = new ChromeDriver();
-        driver.manage().window().maximize();
+        driver.manage().window().setSize(new Dimension(1500,1000));
         driver.get(url);
     }
 
@@ -37,11 +38,7 @@ public class Navigation {
     protected void performClick(By cssElement) {
         waitForLoadingMask();
         waitForElementToBeClickable(cssElement,10);
-//        try {
-//            Thread.sleep(10000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+
         driver.findElement(cssElement).click();
     }
 
@@ -53,7 +50,7 @@ public class Navigation {
         waitForElementToBeDisplayed(HIDDEN_OVERLAY,10);
     }
 
-    public String getTextNav(By cssElement) {
+    protected String getTextNav(By cssElement) {
         return driver.findElement(cssElement).getAttribute("text");
     }
 
