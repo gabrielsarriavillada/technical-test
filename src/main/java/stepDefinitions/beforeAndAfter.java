@@ -2,7 +2,6 @@ package stepDefinitions;
 
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
-import org.openqa.selenium.WebDriver;
 import utils.Navigation;
 
 /**
@@ -17,7 +16,6 @@ public class beforeAndAfter extends Navigation{
 
     @After
     public void afterScenario() {
-
         driver.close();
     }
 
